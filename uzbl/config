@@ -398,7 +398,8 @@ set formfiller = spawn @scripts_dir/formfiller.sh
 #
 
 # Closing / resting
-@cbind  gC              = exit
+@cbind  ,gC              = exit
+@cbind  d               = exit
 @cbind  gQ              = event CLEAN_TABS
 
 # Tab navigating
