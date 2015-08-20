@@ -253,13 +253,15 @@ set ebind     = @mode_bind global,-insert
 @cbind  ^            = scroll horizontal begin
 @cbind  $            = scroll horizontal end
 @cbind  <Space>      = scroll vertical end
-#@cbind  G<Go To:>_   = scroll vertical %r!
-@cbind  gG<Go To:>_   = scroll vertical %r!
+@cbind  ,G<Go To:>_   = scroll vertical %r!
+#
+@cbind  gG<Go To:>_ = scroll vertical %r!
+#
 @cbind  _G<Go To:>_  = scroll horizontal %r!
 
 # Navigation binds
-@cbind  ,b   = back
-@cbind  ,m   = forward
+@cbind  ,b  = back
+@cbind  ,m  = forward
 #
 @cbind  H   = back
 @cbind  L   = forward
@@ -289,7 +291,7 @@ set ebind     = @mode_bind global,-insert
 @cbind  <Ctrl>p = hardcopy
 
 # Web searching binds
-@cbind  sgg<Google:>_         = uri http://www.google.com/search?q=\@<encodeURIComponent(%r)>\@
+@cbind  sgg<Google:>_        = uri http://www.google.com/search?q=\@<encodeURIComponent(%r)>\@
 @cbind  ddg<DuckDuckGo:>_    = uri http://duckduckgo.com/?q=%s
 @cbind  \\awiki<Archwiki:>_  = uri http://wiki.archlinux.org/index.php/Special:Search?search=\@<encodeURIComponent(%r)>\@&go=Go
 @cbind  \\wiki<Wikipedia:>_  = uri http://en.wikipedia.org/w/index.php?title=Special:Search&search=\@<encodeURIComponent(%r)>\@&go=Go
@@ -313,7 +315,7 @@ set ebind     = @mode_bind global,-insert
 # Uri opening prompts
 @cbind  o<uri:>_       = uri %s
 # Or have it load the current uri into the keycmd for editing
-@cbind  O<uri:\@uri>_  = uri %s
+@cbind  go<uri:\@uri>_  = uri %s
 
 # Mode setting binds
 @cbind  i        = @set_mode insert
@@ -388,8 +390,12 @@ set formfiller = spawn @scripts_dir/formfiller.sh
 # Tab opening
 @cbind  gn              = event NEW_TAB
 @cbind  gN              = event NEW_TAB_NEXT
-@cbind  go<uri:>_       = event NEW_TAB %s
-@cbind  gO<uri:>_       = event NEW_TAB_NEXT %s
+@cbind  ,go<uri:>_      = event NEW_TAB %s
+@cbind  ,gO<uri:>_      = event NEW_TAB_NEXT %s
+#
+@cbind  O<uri:>_        = event NEW_TAB %s
+@cbind  gO<uri:\@uri>_  = event NEW_TAB %s
+#
 
 # Closing / resting
 @cbind  gC              = exit
@@ -399,8 +405,8 @@ set formfiller = spawn @scripts_dir/formfiller.sh
 @cbind  g<              = event FIRST_TAB
 @cbind  g>              = event LAST_TAB
 #
-@cbind  K              = event NEXT_TAB
-@cbind  J              = event PREV_TAB
+@cbind  K               = event NEXT_TAB
+@cbind  J               = event PREV_TAB
 #
 @cbind  gt              = event NEXT_TAB
 @cbind  gT              = event PREV_TAB
