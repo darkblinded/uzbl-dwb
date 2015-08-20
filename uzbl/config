@@ -258,8 +258,12 @@ set ebind     = @mode_bind global,-insert
 @cbind  _G<Go To:>_  = scroll horizontal %r!
 
 # Navigation binds
-@cbind  b   = back
-@cbind  m   = forward
+@cbind  ,b   = back
+@cbind  ,m   = forward
+#
+@cbind  H   = back
+@cbind  L   = forward
+#
 @cbind  S   = stop
 @cbind  r   = reload
 @cbind  R   = reload_ign_cache
