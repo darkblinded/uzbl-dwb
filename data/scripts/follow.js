@@ -53,7 +53,7 @@ uzbl.follow.documents = function() {
 
 // find all windows in the display, searching for frames recursively
 uzbl.follow.windows = function(w) {
-    w = (typeof w == 'undefined') ? window.top : w;
+     w = (typeof w == 'undefined') ? window.top : w;
 
     var wins = [w];
     var frames = w.frames;
@@ -101,9 +101,9 @@ uzbl.follow.elementInViewport = function(el) {
     var width  = offset[2];
     var height = offset[3];
     return  up   < window.pageYOffset + window.innerHeight &&
-            left < window.pageXOffset + window.innerWidth &&
-            (up + height)  > window.pageYOffset &&
-            (left + width) > window.pageXOffset;
+        left < window.pageXOffset + window.innerWidth &&
+        (up + height)  > window.pageYOffset &&
+        (left + width) > window.pageXOffset;
 }
 
 // Removes all hints/leftovers that might be generated
@@ -142,8 +142,8 @@ uzbl.follow.generateHint = function(doc, el, label, top, left) {
 
 // this is pointlessly duplicated in uzbl.formfiller
 uzbl.follow.textInputTypes = [
-  'text', 'password', 'search', 'email', 'url', 'number', 'range', 'color',
-  'date', 'month', 'week', 'time', 'datetime', 'datetime-local'
+    'text', 'password', 'search', 'email', 'url', 'number', 'range', 'color',
+    'date', 'month', 'week', 'time', 'datetime', 'datetime-local'
 ];
 
 // this is pointlessly duplicated in uzbl.formfiller
@@ -187,9 +187,9 @@ uzbl.follow.reDrawHints = function(elements, len) {
         doc.hintdiv = doc.createElement('div');
         doc.hintdiv.id = uzbldivid;
         if(uzbl.follow.mode == 'newwindow')
-          doc.hintdiv.className = "new-window";
-        if(uzbl.follow.mode == 'newtab')
-          doc.hintdiv.className = "new-tab";
+            doc.hintdiv.className = "new-window";
+            if(uzbl.follow.mode == 'newtab')
+                doc.hintdiv.className = "new-tab";
         doc.body.appendChild(doc.hintdiv);
     });
 
