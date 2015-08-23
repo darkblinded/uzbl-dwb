@@ -19,7 +19,6 @@ event KEYCMD_CLEAR
 event NEW_WINDOW $@" > "$UZBL_FIFO"
         ;;
     XXXNEW_TABXXX*)
-        touch /tmp/bla
         echo "set mode=
 event KEYCMD_CLEAR
 event NEW_TAB_NEXT $@" > "$UZBL_FIFO"
