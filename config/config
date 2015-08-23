@@ -77,6 +77,7 @@ set download_handler    = sync_spawn @scripts_dir/download.sh
 @on_event   LOAD_COMMIT    js uzbl = {};
 @on_event   LOAD_COMMIT    script @scripts_dir/formfiller.js
 @on_event   LOAD_COMMIT    script @scripts_dir/follow.js
+@on_event   LOAD_COMMIT    script @scripts_dir/openstring.js
 
 # Userscripts/per-site-settings. See the script and the example configuration for details
 #@on_event   LOAD_COMMIT    spawn @scripts_dir/per-site-settings.py @data_home/uzbl/per-site-settings
@@ -325,9 +326,9 @@ set ebind     = @mode_bind global,-insert
 #@cbind  <Ctrl><Mod1>t  = sh 'urxvt -e socat unix-connect:"$UZBL_SOCKET" -'
 
 # Uri opening prompts
-@cbind  o<uri:>_       = uri %s
+@cbind  o<open:>_       = uri \@< getSearchUrl('%s') >\@
 # Or have it load the current uri into the keycmd for editing
-@cbind  go<uri:\@uri>_  = uri %s
+@cbind  go<open:\@uri>_  = uri \@< getSearchUrl('%s') >\@
 
 # Mode setting binds
 @cbind  i        = @set_mode insert
@@ -413,8 +414,9 @@ set formfiller = spawn @scripts_dir/formfiller.sh
 @cbind  ,go<uri:>_      = event NEW_TAB %s
 @cbind  ,gO<uri:>_      = event NEW_TAB_NEXT %s
 #
-@cbind  O<uri:>_        = event NEW_TAB %s
-@cbind  gO<uri:\@uri>_  = event NEW_TAB %s
+#@cbind  O<uri:>_        = chain 'event NEW_TAB' 'script @scripts_dir/openstring.js "%s"'
+@cbind  O<tab-open:>_        = spawn @scripts_dir/newtab.sh \@< getSearchUrl('%s') >\@
+@cbind  gO<tab-open:\@uri>_  = spawn @scripts_dir/newtab.sh \@< getSearchUrl('%s') >\@
 #
 
 # Closing / resting
