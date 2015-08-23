@@ -92,6 +92,9 @@ set download_handler    = sync_spawn @scripts_dir/download.sh
 # Scroll percentage calculation
 @on_event   SCROLL_VERT    set scroll_message = \@<(function(curr, min, max, size){if(max == size) return '--'; var p=(curr/(max - size)); return Math.round(10000*p)/100;})(%1,%2,%3,%4)>\@%
 
+# NoScript
+#@on_event   LOAD_COMMIT    spawn @scripts_dir/noscript.sh
+
 # === Behaviour and appearance ===============================================
 
 # Custom CSS can be defined here, including link follower hint styles
@@ -474,6 +477,6 @@ sync_spawn_exec @scripts_dir/load_cookies.sh
 sync_spawn_exec @scripts_dir/load_cookies.sh @data_home/uzbl/session-cookies.txt
 
 # Set the "home" page.
-set uri = uzbl.org/doesitwork/@COMMIT
+set uri = google.com
 
 # vim: set fdm=syntax:
