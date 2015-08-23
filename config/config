@@ -402,8 +402,8 @@ set formfiller = spawn @scripts_dir/formfiller.sh
 @cbind  zo  = @formfiller once
 
 # Enable/disable scripts
-@cbind  xe  = set enable_scripts = 1
-@cbind  xd  = set enable_scripts = 0
+@cbind  xe  = chain 'spawn @scripts_dir/noscript.add.sh' 'reload'
+@cbind  xd  = chain 'spawn @scripts_dir/noscript.remove.sh' 'reload'
 
 
 # --- Uzbl tabbed binds ------------------------------------------------------
