@@ -126,8 +126,11 @@ set selected_section  = <span foreground="#606060">\@[\@SELECTED_URI]\@</span>
 
 set download_section  = <span foreground="white">\@downloads</span>
 
+# NoScript
+set script_section = <span foreground="#af5f00">\@enable_scripts</span>
+
 set status_format       = <span font_family="monospace">@mode_section @keycmd_section @progress_section @name_section @status_section @scroll_section @selected_section @download_section</span>
-set status_format_right = <span font_family="monospace"><span foreground="#666">uri:</span> @uri_section</span>
+set status_format_right = <span font_family="monospace"> @script_section <span foreground="#666">uri:</span> @uri_section</span>
 
 set title_format_long = \@keycmd_prompt \@raw_modcmd \@raw_keycmd \@TITLE - Uzbl browser <\@NAME> \@SELECTED_URI
 
@@ -138,6 +141,7 @@ set progress.width      = 8
 set progress.format     = [%d>%p]%c
 set progress.done       = =
 set progress.pending    =
+
 
 # === Useragent setup ========================================================
 
@@ -395,6 +399,11 @@ set formfiller = spawn @scripts_dir/formfiller.sh
 @cbind  zn  = @formfiller new
 @cbind  zl  = @formfiller load
 @cbind  zo  = @formfiller once
+
+# Enable/disable scripts
+@cbind  xe  = set enable_scripts = 1
+@cbind  xd  = set enable_scripts = 0
+
 
 # --- Uzbl tabbed binds ------------------------------------------------------
 
