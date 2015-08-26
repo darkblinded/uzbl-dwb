@@ -29,6 +29,8 @@ shift
 content_type="$1"
 shift
 
+UZBL_DOWNLOAD_DIR=$HOME/loads
+
 # the size of the downloaded file in bytes. this is not always accurate, since
 # the server might not have sent a size with its response headers.
 total_size="$1"
