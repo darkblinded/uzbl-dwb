@@ -41,6 +41,9 @@ case "$suggested_filename" in
     #*.torrent)
     #    path="$UZBL_DOWNLOAD_DIR/torrents/$suggested_filename"
     #    ;;
+    *.nzb)
+        path="$UZBL_DOWNLOAD_DIR/usenet/nzb/$suggested_filename"
+        ;;
     # Default case
     *)
         path="$UZBL_DOWNLOAD_DIR/$suggested_filename"
