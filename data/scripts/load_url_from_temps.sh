@@ -18,5 +18,6 @@ fi
 
 sed -i -e "\<^$goto <d" $UZBL_TEMPS_FILE
 
-[ -n "$goto" ] && echo "uri $goto" > "$UZBL_FIFO"
+#[ -n "$goto" ] && echo "uri $goto" > "$UZBL_FIFO"
+[ -n "$goto" ] && echo "event NEW_TAB_NEXT $goto" > "$UZBL_FIFO"
 #[ -n "$goto" ] && echo "uri $goto" | socat - "unix-connect:$UZBL_SOCKET"
